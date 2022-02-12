@@ -1,0 +1,9 @@
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+user.name=Ahmed Rekibi
+user.email=ahmedrekibi158@gmail.com
+filesystem.Oracle Corporation|1.8.0_181|16054572.timestampresolution=1001 microseconds
+filesystem.Oracle Corporation|1.8.0_181|16054572.minracythreshold=0 nanoseconds
+url.https://.insteadof=git://
