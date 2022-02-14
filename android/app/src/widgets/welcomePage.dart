@@ -23,6 +23,7 @@ class WelcomePage extends StatefulWidget {
   @override
   _WelcomePageState createState() => _WelcomePageState();
 }
+
 Widget backButton(context) {
   return InkWell(
     onTap: () {
@@ -70,6 +71,8 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget _signInButton() {
     return InkWell(
       onTap: () {
+        print("i = $i");
+        i++;
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => LoginPage()));
       },
@@ -130,61 +133,33 @@ class _WelcomePageState extends State<WelcomePage> {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(5)),
-              /*boxShadow: <BoxShadow>[
-                  BoxShadow(
-                      color: Colors.grey.shade200,
-                      offset: Offset(2, 4),
-                      blurRadius: 5,
-                      spreadRadius: 2)
-                ],*/
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [blf, blc])),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-          InkWell(
-          onTap: () {
-        Navigator.pop(context);
-        },
-          child: Container(
-            //padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
+          child: SingleChildScrollView(
+            child: Column(
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(left: 0, top: 10, bottom: 10),
-                  child: Icon(Icons.keyboard_arrow_left, color: bk),
+                SizedBox(
+                  height: 60,
                 ),
-                Text(
-                  'Back',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    color: bk,
-                  ),
-                )
+                TitleApp(
+                  context,
+                ),
+                SizedBox(
+                  height: 80,
+                ),
+                _signInButton(),
+                SizedBox(
+                  height: 45,
+                ),
+                _signUpButton(),
+                SizedBox(
+                  height: 20,
+                ),
+                //logo(context)
               ],
             ),
-          ),
-        ),
-              TitleApp(
-                context,
-              ),
-              SizedBox(
-                height: 80,
-              ),
-              _signInButton(),
-              SizedBox(
-                height: 45,
-              ),
-              _signUpButton(),
-              SizedBox(
-                height: 20,
-              ),
-              logo(context)
-            ],
           ),
         ),
       ),
