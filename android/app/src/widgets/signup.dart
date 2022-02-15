@@ -40,7 +40,8 @@ class _SignUpPageState extends State<SignUpPage> {
     profession: "",
     //birthday: DateTime(year),
   );
-  String url = "http://localhost:8082/registration";
+
+  String url = adresse+":8081/passenger/CreateUser";
 
   var _dateTime;
 
@@ -77,8 +78,8 @@ class _SignUpPageState extends State<SignUpPage> {
       'password': passenger.password,
       'address': passenger.address,
       'profession': passenger.profession,
-      'lastname': passenger.lastname,
-      'firstname': passenger.firstname,
+      'lastName': passenger.lastname,
+      'firstName': passenger.firstname,
       'birthday': formatted,
     });
     encoding:
@@ -86,11 +87,11 @@ class _SignUpPageState extends State<SignUpPage> {
 
     print("response body:: ");
     print(res.body);
-    if (res.body != null) {
+    if (res.body == "Success") {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Dashboard(),
+            builder: (context) => LoginPage(),
           ));
     }
   }
@@ -142,6 +143,9 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Widget _submitButton() {
     return ElevatedButton(
+      style:ElevatedButton.styleFrom(
+        primary: blc,
+      ),
       onPressed: () {
         registrate();
       },
@@ -215,9 +219,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 },
                 validator: (text) {
                   if (text!.isEmpty) {
-                    return "Firstname is empty";
+                    return "Firstname is empty";}
+
                     return null;
-                  }
+
                 },
                 decoration: InputDecoration(
                     border: InputBorder.none,

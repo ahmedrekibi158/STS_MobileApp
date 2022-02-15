@@ -14,6 +14,7 @@ Color orc = Color.fromRGBO(255, 218, 97, 0.7);
 
 Color FillColor = Color(0xffabced6);
 bool isSwitched = false;
+String adresse="http://192.168.28.4";
 
 class WelcomePage extends StatefulWidget {
   WelcomePage({Key? key, this.title}) : super(key: key);

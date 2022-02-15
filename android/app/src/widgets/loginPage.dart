@@ -24,7 +24,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   Passenger passenger = Passenger(email: "", password: "");
-  String url = "http://localhost:8082/login";
+  String url = adresse+":8081/authentication/login";
 
   Future save() async {
     print("before send request");
@@ -43,7 +43,8 @@ class _LoginPageState extends State<LoginPage> {
 
     print("response body:: ");
     print(res.body);
-    if (res.body != null) {
+    print(res.statusCode);
+    if (res.statusCode == 200) {
     Navigator.push(
     context,
     MaterialPageRoute(
@@ -78,6 +79,9 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _submitButton() {
     return ElevatedButton(
+      style:ElevatedButton.styleFrom(
+        primary: blc,
+      ),
       onPressed: () {
         //if (_formKey.currentState!.validate()) {
         save();
@@ -196,9 +200,9 @@ class _LoginPageState extends State<LoginPage> {
                 height: 10,
               ),
               TextFormField(
-                controller: TextEditingController(text: passenger.email),
+                controller: TextEditingController(text: passenger.password),
                 onChanged: (val) {
-                  passenger.email = val;
+                  passenger.password = val;
                 },
                 validator: (text) {
                   if (text!.isEmpty) {
